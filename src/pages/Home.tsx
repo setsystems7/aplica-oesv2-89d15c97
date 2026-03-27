@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Handshake,
   ReceiptText,
