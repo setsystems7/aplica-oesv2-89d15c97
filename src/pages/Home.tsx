@@ -92,49 +92,85 @@ const apps = [
 
 type App = (typeof apps)[number];
 
-/* ─── floating particles (reduced to 8 for performance) ──────────── */
-const PARTICLES = Array.from({ length: 8 }, (_, i) => ({
-  id: i,
-  left: `${(i * 12.5) % 100}%`,
-  top: `${(i * 15) % 100}%`,
-  yEnd: -80 - (i % 3) * 40,
-  xEnd: ((i % 2 === 0 ? 1 : -1) * 20),
-  dur: 8 + (i % 3) * 4,
-  del: i * 0.8,
-}));
-
-function FloatingParticles() {
+/* ─── tech command center background ─────────────────────────────── */
+function TechBackground() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {PARTICLES.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute w-1 h-1 rounded-full bg-primary/20"
-          style={{ left: p.left, top: p.top }}
-          animate={{ y: [0, p.yEnd, 0], x: [0, p.xEnd, 0], opacity: [0, 0.6, 0] }}
-          transition={{ duration: p.dur, repeat: Infinity, delay: p.del, ease: "easeInOut" }}
-        />
-      ))}
-    </div>
-  );
-}
+      {/* Base gradient */}
+      <div className="absolute inset-0" style={{
+        background: "radial-gradient(ellipse 80% 60% at 50% 40%, hsl(240, 20%, 10%) 0%, hsl(240, 15%, 4%) 100%)",
+      }} />
 
-/* ─── static CSS background (no JS animation = much faster) ──────── */
-function MeshBackground() {
-  return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      <div
-        className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] rounded-full opacity-[0.12] animate-pulse"
-        style={{ background: "radial-gradient(circle, hsl(340, 82%, 55%), transparent 70%)", animationDuration: "6s" }}
+      {/* Grid overlay */}
+      <div className="absolute inset-0 opacity-[0.07]" style={{
+        backgroundImage: `
+          linear-gradient(hsl(200, 80%, 50%) 1px, transparent 1px),
+          linear-gradient(90deg, hsl(200, 80%, 50%) 1px, transparent 1px)
+        `,
+        backgroundSize: "60px 60px",
+      }} />
+
+      {/* Smaller sub-grid */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `
+          linear-gradient(hsl(200, 80%, 50%) 1px, transparent 1px),
+          linear-gradient(90deg, hsl(200, 80%, 50%) 1px, transparent 1px)
+        `,
+        backgroundSize: "15px 15px",
+      }} />
+
+      {/* Horizontal scan line */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute left-0 right-0 h-[2px] opacity-[0.08]"
+          style={{
+            background: "linear-gradient(90deg, transparent, hsl(340, 82%, 55%), hsl(200, 80%, 50%), transparent)",
+            animation: "scanLine 6s linear infinite",
+          }}
+        />
+      </div>
+
+      {/* Corner brackets - top left */}
+      <div className="absolute top-6 left-6 w-16 h-16 border-l-2 border-t-2 border-primary/20 rounded-tl-sm" />
+      <div className="absolute top-6 right-6 w-16 h-16 border-r-2 border-t-2 border-primary/20 rounded-tr-sm" />
+      <div className="absolute bottom-6 left-6 w-16 h-16 border-l-2 border-b-2 border-primary/20 rounded-bl-sm" />
+      <div className="absolute bottom-6 right-6 w-16 h-16 border-r-2 border-b-2 border-primary/20 rounded-br-sm" />
+
+      {/* Radial glow behind content */}
+      <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-[0.06]"
+        style={{ background: "radial-gradient(circle, hsl(340, 82%, 55%), transparent 70%)" }}
       />
-      <div
-        className="absolute top-[30%] -right-[15%] w-[55vw] h-[55vw] rounded-full opacity-[0.08] animate-pulse"
-        style={{ background: "radial-gradient(circle, hsl(270, 76%, 55%), transparent 70%)", animationDuration: "8s", animationDelay: "2s" }}
+      <div className="absolute top-[50%] left-[20%] w-[400px] h-[400px] rounded-full opacity-[0.04]"
+        style={{ background: "radial-gradient(circle, hsl(200, 80%, 50%), transparent 70%)" }}
       />
-      <div
-        className="absolute -bottom-[15%] left-[20%] w-[50vw] h-[50vw] rounded-full opacity-[0.06] animate-pulse"
-        style={{ background: "radial-gradient(circle, hsl(200, 76%, 50%), transparent 70%)", animationDuration: "7s", animationDelay: "4s" }}
+
+      {/* Data stream dots - vertical */}
+      <div className="absolute top-0 left-[10%] w-px h-full opacity-[0.06]"
+        style={{
+          background: "repeating-linear-gradient(to bottom, transparent, transparent 20px, hsl(200, 80%, 50%) 20px, hsl(200, 80%, 50%) 22px)",
+          animation: "dataStream 4s linear infinite",
+        }}
       />
+      <div className="absolute top-0 right-[15%] w-px h-full opacity-[0.04]"
+        style={{
+          background: "repeating-linear-gradient(to bottom, transparent, transparent 30px, hsl(340, 82%, 55%) 30px, hsl(340, 82%, 55%) 32px)",
+          animation: "dataStream 6s linear infinite reverse",
+        }}
+      />
+
+      {/* HUD circles */}
+      <div className="absolute top-[20%] right-[8%] w-24 h-24 rounded-full border border-primary/[0.06] hidden lg:block"
+        style={{ animation: "hudPulse 4s ease-in-out infinite" }}
+      />
+      <div className="absolute top-[22%] right-[8%] w-20 h-20 rounded-full border border-cyan-500/[0.04] ml-2 mt-2 hidden lg:block"
+        style={{ animation: "hudPulse 4s ease-in-out infinite 1s" }}
+      />
+
+      {/* Noise texture */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        backgroundSize: "128px 128px",
+      }} />
     </div>
   );
 }
@@ -228,8 +264,7 @@ export default function Home() {
     <div className="relative min-h-[100dvh] w-full overflow-x-hidden select-none dark"
       style={{ background: "hsl(240, 10%, 5%)" }}>
 
-      <MeshBackground />
-      <FloatingParticles />
+      <TechBackground />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col min-h-[100dvh]">
