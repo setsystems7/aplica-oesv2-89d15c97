@@ -251,11 +251,6 @@ function InteractiveBackground() {
         <circle cx="15" cy="115" r="2" fill="hsl(200,80%,50%)" className="animate-[blip_2s_ease-in-out_infinite_1.5s]" />
       </svg>
 
-      {/* XP bar top */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] overflow-hidden">
-        <div className="h-full animate-[xpBar_6s_ease-in-out_infinite]"
-          style={{ background: "linear-gradient(90deg, hsl(340,82%,55%), hsl(270,76%,55%), hsl(200,80%,50%), hsl(150,70%,50%))" }} />
-      </div>
 
       {/* Noise */}
       <div className="absolute inset-0 opacity-[0.02]" style={{
