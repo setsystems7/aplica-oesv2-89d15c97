@@ -150,29 +150,15 @@ function AppCard({ app, index }: { app: App; index: number }) {
       target="_blank"
       rel="noopener noreferrer"
       className="group relative block"
-      style={{ perspective: 800 }}
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: 0.08 * index + 0.3,
-      }}
-      onMouseMove={handleMouseMove}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={handleMouseLeave}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.05 * index + 0.2 }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={handleMouseLeave}
     >
-      <motion.div
-        className="relative overflow-hidden rounded-2xl border border-white/[0.06] backdrop-blur-sm"
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-          background: "linear-gradient(145deg, hsl(240 10% 8% / 0.8), hsl(240 10% 6% / 0.95))",
-        }}
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      <div
+        className="relative overflow-hidden rounded-2xl border border-white/[0.06] transition-transform duration-200 hover:scale-[1.02]"
+        style={{ background: "linear-gradient(145deg, hsl(240 10% 8% / 0.8), hsl(240 10% 6% / 0.95))" }}
       >
         {/* Gradient top bar */}
         <div className={`h-[3px] w-full bg-gradient-to-r ${app.gradient}`} />
