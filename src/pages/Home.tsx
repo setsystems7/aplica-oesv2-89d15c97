@@ -438,17 +438,17 @@ export default function Home() {
         </motion.header>
 
         {/* ── APPS GRID ── */}
-        <main className="flex-1 max-w-6xl w-full mx-auto px-5 sm:px-8 py-8 sm:py-10">
+        <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-8 py-6 sm:py-8">
 
           {/* Section title */}
           <motion.div
-            className="flex items-center gap-3 mb-8"
+            className="flex items-center gap-2 mb-6"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <div className="w-1 h-6 rounded-full bg-gradient-to-b from-primary to-violet-500" />
-            <span className="text-xs font-black uppercase tracking-[0.25em] text-muted-foreground/40">
+            <div className="w-1 h-5 rounded-full bg-gradient-to-b from-primary to-violet-500" />
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/40">
               Ecossistema de Gestão
             </span>
             <div className="flex-1 h-px bg-gradient-to-r from-white/[0.06] to-transparent" />
@@ -457,8 +457,8 @@ export default function Home() {
             </span>
           </motion.div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {/* Grid - 2 cols mobile, 3 tablet, 4 desktop */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {apps.map((app, i) => (
               <AppCard key={app.id} app={app} index={i} />
             ))}
