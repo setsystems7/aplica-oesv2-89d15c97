@@ -164,34 +164,20 @@ function AppCard({ app, index }: { app: App; index: number }) {
         <div className={`h-[3px] w-full bg-gradient-to-r ${app.gradient}`} />
 
         {/* Hover glow effect */}
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                background: `radial-gradient(300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${app.glowColor}15, transparent 60%)`,
-              }}
-            />
-          )}
-        </AnimatePresence>
+        <div
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"}`}
+          style={{ background: `radial-gradient(300px circle at 50% 50%, ${app.glowColor}15, transparent 60%)` }}
+        />
 
         <div className="p-5 sm:p-6">
           {/* Icon + badge row */}
           <div className="flex items-start justify-between mb-4">
-            <motion.div
-              className={`flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${app.gradient} shadow-lg`}
-              animate={hovered ? { scale: 1.1, rotate: -5 } : { scale: 1, rotate: 0 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-              style={{
-                boxShadow: hovered ? `0 8px 30px ${app.glowColor}40` : `0 4px 15px ${app.glowColor}20`,
-              }}
+            <div
+              className={`flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${app.gradient} shadow-lg transition-transform duration-200 ${hovered ? "scale-110 -rotate-3" : ""}`}
+              style={{ boxShadow: `0 4px 15px ${app.glowColor}20` }}
             >
               <app.Icon size={22} strokeWidth={1.8} className="text-white" />
-            </motion.div>
+            </div>
 
             <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/60 bg-white/[0.04] border border-white/[0.06] px-2.5 py-1 rounded-full">
               {app.badge}
