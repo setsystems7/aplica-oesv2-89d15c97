@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { toast } from "@/hooks/use-toast";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
+import NeuralNetworkBg from "@/components/NeuralNetworkBg";
 import {
   Handshake,
   ReceiptText,
