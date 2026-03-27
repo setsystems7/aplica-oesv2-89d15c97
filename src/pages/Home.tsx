@@ -540,10 +540,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* HUD Stats */}
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 sm:pb-5">
-            <HudStats />
-          </div>
 
           <div className="h-px mx-4 sm:mx-8 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
         </motion.header>
