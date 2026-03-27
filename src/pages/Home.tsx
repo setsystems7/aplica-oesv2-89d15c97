@@ -270,8 +270,8 @@ function InteractiveBackground() {
   );
 }
 
-/* ─── animated counter ───────────────────────────────────────────── */
-function AnimatedCounter({ value, duration = 2 }: { value: number; duration?: number }) {
+
+
   const [count, setCount] = useState(0);
   useEffect(() => {
     let start = 0;
