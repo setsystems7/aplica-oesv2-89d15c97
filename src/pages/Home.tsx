@@ -503,7 +503,7 @@ export default function Home() {
           </motion.div>
 
           {/* Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3 lg:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3 lg:gap-4 [&>*:last-child:nth-child(odd)]:col-span-2 [&>*:last-child:nth-child(odd)]:sm:col-span-1">
             {apps.map((app, i) => (
               <AppCard key={app.id} app={app} index={i} />
             ))}
