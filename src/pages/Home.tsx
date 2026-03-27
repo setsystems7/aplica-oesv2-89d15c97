@@ -211,19 +211,10 @@ function AppCard({ app, index }: { app: App; index: number }) {
         </div>
 
         {/* Bottom shimmer on hover */}
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              className={`absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r ${app.gradient}`}
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              exit={{ scaleX: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              style={{ transformOrigin: "left" }}
-            />
-          )}
-        </AnimatePresence>
-      </motion.div>
+        <div
+          className={`absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r ${app.gradient} transition-transform duration-300 origin-left ${hovered ? "scale-x-100" : "scale-x-0"}`}
+        />
+      </div>
     </motion.a>
   );
 }
