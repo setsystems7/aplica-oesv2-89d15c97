@@ -386,7 +386,7 @@ export default function Home() {
                   {getGreeting()}
                 </motion.p>
 
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-[1.1]">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground tracking-tight leading-[1.1]">
                   <span className="block">Dra. Fernanda</span>
                   <span className="bg-gradient-to-r from-primary via-pink-400 to-violet-400 bg-clip-text text-transparent">
                     Sarelli
