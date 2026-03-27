@@ -75,7 +75,7 @@ const apps = [
     Icon: Laptop,
     gradient: "from-indigo-500 to-blue-800",
     glowColor: "hsl(230, 76%, 55%)",
-    url: "http://computadores.deputadasarelli.com.br/login",
+    url: "https://computadores.deputadasarelli.com.br/login",
     xp: 430,
   },
   {
