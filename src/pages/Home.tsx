@@ -27,7 +27,7 @@ const apps = [
     Icon: Handshake,
     gradient: "from-rose-500 to-pink-700",
     glowColor: "hsl(340, 82%, 52%)",
-    url: "https://liderancas.deputadasarelli.com.br/login",
+    url: "http://liderancas.deputadasarelli.com.br/login",
   },
   {
     id: "financeiro",
@@ -37,7 +37,7 @@ const apps = [
     Icon: ReceiptText,
     gradient: "from-violet-500 to-purple-800",
     glowColor: "hsl(270, 76%, 53%)",
-    url: "https://contas.deputadasarelli.com.br/login",
+    url: "http://contas.deputadasarelli.com.br/login",
   },
   {
     id: "visitas",
@@ -47,7 +47,7 @@ const apps = [
     Icon: ClipboardCheck,
     gradient: "from-red-400 to-rose-700",
     glowColor: "hsl(350, 80%, 55%)",
-    url: "https://visitas.deputadasarelli.com.br/",
+    url: "http://visitas.deputadasarelli.com.br/",
   },
   {
     id: "suplentes",
@@ -57,7 +57,7 @@ const apps = [
     Icon: UserRoundPlus,
     gradient: "from-pink-400 to-fuchsia-700",
     glowColor: "hsl(330, 76%, 55%)",
-    url: "https://suplentes.deputadasarelli.com.br/login",
+    url: "http://suplentes.deputadasarelli.com.br/login",
   },
   {
     id: "computadores",
@@ -67,7 +67,7 @@ const apps = [
     Icon: Laptop,
     gradient: "from-indigo-500 to-blue-800",
     glowColor: "hsl(230, 76%, 55%)",
-    url: "https://computadores.deputadasarelli.com.br/login",
+    url: "http://computadores.deputadasarelli.com.br/login",
   },
   {
     id: "dados",
@@ -77,7 +77,7 @@ const apps = [
     Icon: BarChart3,
     gradient: "from-cyan-400 to-teal-700",
     glowColor: "hsl(185, 76%, 50%)",
-    url: "https://paineldedados.deputadasarelli.com.br/login",
+    url: "http://paineldedados.deputadasarelli.com.br/login",
   },
   {
     id: "site",
@@ -87,7 +87,7 @@ const apps = [
     Icon: Globe,
     gradient: "from-pink-400 to-rose-600",
     glowColor: "hsl(340, 82%, 60%)",
-    url: "https://www.deputadasarelli.com.br",
+    url: "http://www.deputadasarelli.com.br",
   },
 ] as const;
 
