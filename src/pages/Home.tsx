@@ -268,20 +268,9 @@ function InteractiveBackground() {
 /* ─── app card with XP bar ───────────────────────────────────────── */
 function AppCard({ app, index }: { app: App; index: number }) {
 
-  const [opening, setOpening] = useState(false);
-
-  const handleClick = async (e: React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (opening) return;
-    setOpening(true);
-    try {
-      const res = await fetch(app.url, { method: 'HEAD', mode: 'no-cors' });
-      window.open(app.url, '_blank', 'noopener,noreferrer');
-    } catch {
-      toast({ title: '⚠️ Sistema indisponível', description: `${app.title} está fora do ar no momento.`, variant: 'destructive' });
-    } finally {
-      setOpening(false);
-    }
+    window.open(app.url, '_blank', 'noopener,noreferrer');
   };
 
   return (
